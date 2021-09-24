@@ -9,7 +9,7 @@ const Form = () => {
     salary: 0,
   });
 
-  const { fullName, age, salary, country } = formData;
+  const { fullName, age, salary, country, position } = formData;
 
   const updateFormData = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,6 +44,14 @@ const Form = () => {
         placeholder="Country"
         name="country"
         value={country}
+        onChange={(e) => updateFormData(e)}
+      />
+      <label>Position:</label>
+      <input
+        type="number"
+        placeholder="Position"
+        name="position"
+        value={position}
         onChange={(e) => updateFormData(e)}
       />
       <label>Salary:</label>
