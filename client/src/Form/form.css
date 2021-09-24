@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  flex: 1;
+  border-right: 1px solid black;
+}
+
+.form > input {
+  height: 5vh;
+}
+
+.form > button {
+  max-width: 25%;
+  min-height: 5vh;
+  cursor: pointer;
+}
