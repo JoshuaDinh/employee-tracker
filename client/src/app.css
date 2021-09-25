@@ -7,3 +7,10 @@
   display: flex;
   max-height: 100vh;
 }
+
+.header {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,9 +1,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  min-height: 100vh;
+  justify-content: space-between;
+  max-height: 100vh;
   flex: 1;
+  padding: 20px;
+
   border-right: 1px solid black;
 }
 
