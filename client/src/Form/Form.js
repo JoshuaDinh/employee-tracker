@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./form.css";
+import axios from "axios";
 
 const Form = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    age: "",
+    age: null,
     country: "",
-    salary: 0,
+    salary: null,
+    position: "",
   });
 
   const { fullName, age, salary, country, position } = formData;
@@ -15,10 +17,26 @@ const Form = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submit = (event) => {
-    event.preventDefault();
-    console.log(formData);
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
+
+  const body = JSON.stringify({ fullName, age, salary, country, position });
+
+  const submit = async (event) => {
+    event.preventDefault();
+    axios.post("/api/addEmployee", body, config);
+    setFormData({
+      fullName: "",
+      age: "",
+      country: "",
+      salary: "",
+      position: "",
+    });
+  };
+
   return (
     <form className="form">
       <h1>Enter Employee Info:</h1>
@@ -26,13 +44,13 @@ const Form = () => {
       <input
         type="text"
         placeholder="Name"
-        name="name"
+        name="fullName"
         value={fullName}
         onChange={(e) => updateFormData(e)}
       />
       <label>Age:</label>
       <input
-        type="text"
+        type="number"
         placeholder="Age"
         name="age"
         value={age}
@@ -48,7 +66,7 @@ const Form = () => {
       />
       <label>Position:</label>
       <input
-        type="number"
+        type="text"
         placeholder="Position"
         name="position"
         value={position}
@@ -62,7 +80,7 @@ const Form = () => {
         value={salary}
         onChange={(e) => updateFormData(e)}
       />
-      <button onClick={(event) => submit(event)}>Show Employee</button>
+      <button onClick={(event) => submit(event)}>Submit Employee</button>
     </form>
   );
 };
