@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./form.css";
 import axios from "axios";
 
-const Form = () => {
+const Form = ({ update }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     age: null,
@@ -35,11 +35,14 @@ const Form = () => {
       salary: "",
       position: "",
     });
+    update();
   };
 
   return (
     <form className="form">
-      <h1>Enter Employee Info:</h1>
+      <div className="header">
+        <h1>Enter Employee Info:</h1>
+      </div>
       <label>Name:</label>
       <input
         type="text"
