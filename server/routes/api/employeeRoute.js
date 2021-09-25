@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../../db/dbConfig");
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   const { fullName, age, salary, position, country } = req.body;
 
   const sql =
@@ -10,6 +10,18 @@ router.post("/", async (req, res) => {
   const data = [fullName, age, country, position, salary];
 
   connection.query(sql, data, (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+router.get("/", (req, res) => {
+  const sql = "SELECT * FROM employees";
+
+  connection.query(sql, (err, result) => {
     if (err) {
       res.status(500).json({ error: err });
     } else {

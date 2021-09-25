@@ -1,5 +1,5 @@
 const express = require("express");
-const employeeRoute = require("./routes/api/addEmployeeRoute");
+const employeeRoute = require("./routes/api/employeeRoute");
 
 const app = express();
 
