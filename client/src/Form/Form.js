@@ -27,7 +27,7 @@ const Form = () => {
 
   const submit = async (event) => {
     event.preventDefault();
-    axios.post("/api/addEmployee", body, config);
+    axios.post("/api/employee", body, config);
     setFormData({
       fullName: "",
       age: "",

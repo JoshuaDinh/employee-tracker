@@ -1,6 +1,5 @@
 const express = require("express");
-
-const addEmployeeRoute = require("./routes/api/addEmployeeRoute");
+const employeeRoute = require("./routes/api/addEmployeeRoute");
 
 const app = express();
 
@@ -10,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
 // Routes
-app.use("/api/addEmployee", addEmployeeRoute);
+app.use("/api/employee", employeeRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "you are connected" });
